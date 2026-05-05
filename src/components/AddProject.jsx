@@ -23,7 +23,7 @@ function AddProject({onAddProject}) {
     
 
     return (
-        <div>
+        <div className='app-container'>
             <h1>Add Project</h1>
             <form onSubmit={handleSubmit}>
                 <label>Title</label><br/>

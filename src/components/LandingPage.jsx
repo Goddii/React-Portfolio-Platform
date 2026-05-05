@@ -12,7 +12,7 @@ function LandingPage(){
 
 
     return (
-        <div>
+        <div className="main-container">
             <h1>Personal Project Showcase App</h1>
             <AddProject onAddProject={addProject}/>
             <SearchProject projects={projects} />
