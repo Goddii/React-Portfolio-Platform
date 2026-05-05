@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 
 
-function AddProject() {
+function AddProject({onAddProject}) {
     const [newProject, setNewProject] = useState({title:'', description:''})
 
     const update = (field, value) => setNewProject({...newProject, [field]:value})
@@ -27,9 +27,9 @@ function AddProject() {
             <h1>Add Project</h1>
             <form onSubmit={handleSubmit}>
                 <label>Title</label><br/>
-                <input value={newProject.title} onChange={e => setNewProject('title',e.target.value)}/><br/>
+                <input value={newProject.title} onChange={e => update('title',e.target.value)}/><br/>
                 <label>Description</label><br/>
-                <input value={newProject.description} onChange={e => setNewProject('description', e.target.value)}/> <br/>
+                <input value={newProject.description} onChange={e => update('description', e.target.value)}/> <br/>
 
                 <button type='submit'>Add</button>
 
