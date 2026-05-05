@@ -1,18 +1,25 @@
 import { useState } from "react";
 
 
-function SearchProject(){
-    const [projectsInfo, setDisplayProject] = useState('')
+function SearchProject({projects}){
+    const [query, setQuery] = useState('')
 
+    const filtered = projects.filter(p => p.title.toLowerCase().includes(query.toLowerCase()) || p.description.toLowerCase().includes(query.toLowerCase()))
 
-
-    const update = (field, value) => {setDisplayProject({...projectsInfo, [field]:value})}
 
 
     return(
         <div>
-            <input type="text" onChange={(e) => update('name', e.target.value) } placeholder="Search Project..." />
-            <p>{projectsInfo.name}</p>
+            <input value={query} onChange={(e) => setQuery(e.target.value) } placeholder="Search Project..." />
+            
+            {projects.length === 0 ? (
+                <p>No projects yet.Add one above</p>
+            ):(<ul>
+                {filtered.map(project => (<li key={project.id}>
+                    <strong>{project.title}</strong>
+                    <p>{project.description}</p>
+                </li>))}
+            </ul>)}
         </div>
     )
 }
