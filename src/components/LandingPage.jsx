@@ -1,4 +1,6 @@
 import { useState } from "react";
+import AddProject from "./AddProject";
+import SearchProject from "./SearchProject";
 
 
 function LandingPage(){
@@ -12,6 +14,8 @@ function LandingPage(){
     return (
         <div>
             <h1>Personal Project Showcase App</h1>
+            <AddProject onAddProject={addProject}/>
+            <SearchProject projects={projects} />
         </div>
     )
 }

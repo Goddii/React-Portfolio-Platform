@@ -3,21 +3,33 @@ import { useState } from 'react'
 
 
 function AddProject() {
-    const [newProject, setNewProject] = useState({name:'', description:''})
+    const [newProject, setNewProject] = useState({title:'', description:''})
+
+    const update = (field, value) => setNewProject({...newProject, [field]:value})
 
     function handleSubmit(event){
-         event.preventDefault()  
-         return 
-    }
+         event.preventDefault() 
+
+         if(!newProject.title.trim()) return
+
+         onAddProject({
+            id: Date.now(),
+            title: newProject.title,
+            description : newProject.description
+         })
+         setNewProject({title:'', description:''})
+         }
+         
+    
 
     return (
         <div>
             <h1>Add Project</h1>
             <form onSubmit={handleSubmit}>
                 <label>Title</label><br/>
-                <input onChange={e => setNewProject(e.target.value)}/><br/>
+                <input value={newProject.title} onChange={e => setNewProject('title',e.target.value)}/><br/>
                 <label>Description</label><br/>
-                <input onChange={e => setNewProject(e.target.value)}/> <br/>
+                <input value={newProject.description} onChange={e => setNewProject('description', e.target.value)}/> <br/>
 
                 <button type='submit'>Add</button>
 
