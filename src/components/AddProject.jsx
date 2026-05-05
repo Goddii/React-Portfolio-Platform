@@ -3,10 +3,11 @@ import { useState } from 'react'
 
 
 function AddProject() {
-    const [newProject, setNewProject] = useState(' ')
+    const [newProject, setNewProject] = useState({name:'', description:''})
 
     function handleSubmit(event){
-         event.preventDefault()   
+         event.preventDefault()  
+         return 
     }
 
     return (
