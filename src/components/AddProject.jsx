@@ -23,13 +23,13 @@ function AddProject({addProject}) {
     
 
     return (
-        <div className='relative group p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all hover:bg-white/20'>
-            <h1>Add Project</h1>
+        <div className='relative group p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all hover:bg-white/20 w-full'>
+            <h1 className='text-xl font-bold text-white mb-2'>Add Project</h1>
             <form onSubmit={handleSubmit}>
                 <label className='text-xl font-semibold text-white '>Title</label><br/>
-                <input className='peer bg-transparent border-b-2 border-white/10 focus:border-blue-500 outline-none transition-all' value={newProject.title} onChange={e => update('title',e.target.value)}/><br/>
+                <input className='peer bg-transparent border-b-2 border-white/10 focus:border-blue-500 outline-none transition-all w-1/2' value={newProject.title} onChange={e => update('title',e.target.value)}/><br/>
                 <label className='text-xl font-semibold text-white'>Description</label><br/>
-                <input className=' peer bg-transparent border-b-2 border-white/10 focus:border-blue-500 outline-none transition-all' value={newProject.description} onChange={e => update('description', e.target.value)}/> <br/>
+                <input className=' peer bg-transparent border-b-2 border-white/10 focus:border-blue-500 outline-none transition-all w-1/2' value={newProject.description} onChange={e => update('description', e.target.value)}/> <br/>
 
                 <button type='submit' className='bg-gradient-to-r from-blue-600 to-cyan-500 hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] w-20 rounded-sm p-2 mt-2'>Add</button>
 
