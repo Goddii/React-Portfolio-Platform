@@ -14,3 +14,9 @@ function handleSave() {
     editProject(project.id, editData)
     setIsEditing(false)
 }
+
+function handleCancel() {
+    setEditData({title: project.title, description: project.description})
+    setIsEditing(false)
+}
+
