@@ -1,26 +1,66 @@
 import { useState } from "react";
+import ProjectCard from "./ProjectCard";
 
+function SearchProject({ projects, deleteProject, editProject }) {
+  const [query, setQuery] = useState("");
 
-function SearchProject({projects}){
-    const [query, setQuery] = useState('')
+  const filtered = projects.filter(
+    (p) =>
+      p.title.toLowerCase().includes(query.toLowerCase()) ||
+      p.description.toLowerCase().includes(query.toLowerCase())
+  );
 
-    const filtered = projects.filter(p => p.title.toLowerCase().includes(query.toLowerCase()) || p.description.toLowerCase().includes(query.toLowerCase()))
+  return (
+    <div className="w-full flex flex-col gap-4">
+      {/* Search Input */}
+      <div className="relative">
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
+          🔍
+        </span>
+        <input
+          className="w-full pl-9 pr-4 py-2 rounded-xl bg-white/5 border border-white/10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none text-white placeholder:text-slate-500 transition-all"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search projects..."
+        />
+      </div>
 
+      {/* Project Count */}
+      {projects.length > 0 && (
+        <p className="text-slate-500 text-xs">
+          {filtered.length} of {projects.length} project
+          {projects.length !== 1 ? "s" : ""}
+          {query && ` matching "${query}"`}
+        </p>
+      )}
 
-
-    return(
-        <div className="w-full flex flex-col gap-4">
-            <input className='w-full px-4 py-2 rounded-full bg-white/5 border border-white/10 focus:ring-2 focus:ring-blue-500 outline-none' value={query} onChange={(e) => setQuery(e.target.value) } placeholder="Search Project..." />
-            
-            {projects.length === 0 ? (
-                <p className='italic text-slate-400 animate-pulse mt-2 p-2 text-pretty'>No projects yet.Add one above</p>
-            ):(<ul>
-                {filtered.map(project => (<li className="p-4 mb-3 mt-3 rounded-xl bg-white/10 border border-white/20 hover:border-blue-500/50 transition-colors " key={project.id}>
-                    <strong className="text-cyan-400">{project.title}</strong>
-                    <p className="text-pretty" className='text-slate-300' text>{project.description}</p>
-                </li>))}
-            </ul>)}
+      {/* Empty State */}
+      {projects.length === 0 ? (
+        <div className="text-center py-10">
+          <p className="text-slate-500 text-sm italic">
+            No projects yet. Add one above to get started!
+          </p>
         </div>
-    )
+      ) : filtered.length === 0 ? (
+        <div className="text-center py-8">
+          <p className="text-slate-500 text-sm italic">
+            No projects match your search.
+          </p>
+        </div>
+      ) : (
+        <ul className="flex flex-col gap-3">
+          {filtered.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              deleteProject={deleteProject}
+              editProject={editProject}
+            />
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }
+
 export default SearchProject;
