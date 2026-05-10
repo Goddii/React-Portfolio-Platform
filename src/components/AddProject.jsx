@@ -40,10 +40,10 @@ function AddProject({addProject}) {
                 </div>
                 <div className='flex flex-col gap-1'>
                     <label className='text-xl font-semibold text-white'>Description</label><br/>
-                    <textarea placeholder='A short description of the project...' className='bg-white/5 border' value={newProject.description} onChange={e => update('description', e.target.value)} /> <br/><br/>
+                    <textarea placeholder='A short description of the project...' className='bg-white/5 border border-white/20 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-lg px-3 py-2 text-white transition-all resize-none placeholder:text-slate-500' value={newProject.description} onChange={e => update('description', e.target.value)} /> <br/><br/>
                 </div>
 
-                <button type='submit' className='bg-gradient-to-r from-blue-600 to-cyan-500 hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] w-20 rounded-sm p-2 mt-2'>Add</button>
+                <button type='submit' className='self-start bg-gradient-to-r from blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold px-6 py-2 rounded-lg transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] active:scale-95'> + Add Project</button>
 
             </form>
             

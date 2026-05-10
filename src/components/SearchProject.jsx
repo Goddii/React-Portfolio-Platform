@@ -9,7 +9,7 @@ function SearchProject({projects}){
 
 
     return(
-        <div className="w-full">
+        <div className="w-full flex flex-col gap-4">
             <input className='w-full px-4 py-2 rounded-full bg-white/5 border border-white/10 focus:ring-2 focus:ring-blue-500 outline-none' value={query} onChange={(e) => setQuery(e.target.value) } placeholder="Search Project..." />
             
             {projects.length === 0 ? (
