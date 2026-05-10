@@ -10,5 +10,7 @@ function ProjectCard({ project, deleteProject, editProject }) {
 }
 
 function handleSave() {
-    if()
+    if(!editData.title.trim()) return;
+    editProject(project.id, editData)
+    setIsEditing(false)
 }
