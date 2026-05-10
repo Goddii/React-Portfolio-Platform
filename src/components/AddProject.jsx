@@ -5,6 +5,8 @@ import { useState } from 'react'
 function AddProject({addProject}) {
     const [newProject, setNewProject] = useState({title:'', description:''})
 
+    const [error, setError] = useState('')
+
     const update = (field, value) => setNewProject({...newProject, [field]:value})
 
     function handleSubmit(event){
